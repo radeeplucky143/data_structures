@@ -17,3 +17,11 @@
   
   - MaxHeap
   - MinHeap
+
+
+## Stack:
+
+  Stack data strcuture follows the (LIFO) Last In First Out
+
+  - ArrayStack
+  - LinkedListStack
