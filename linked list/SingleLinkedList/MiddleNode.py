@@ -25,10 +25,4 @@ def get_first_middle_node(linked_list):
         print(first_ptr.data)
 
 
-nodes = int(input("Enter the number of nodes: "))
-linked_list = SingleLinkedList()
-for _ in range(nodes):
-    linked_list.insert_back(int(input("Enter the data : ")))
 
-get_first_middle_node(linked_list)
-get_second_middle_node(linked_list)
