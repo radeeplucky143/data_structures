@@ -8,7 +8,7 @@ Linked List :
     - Reversing Linked List
     - Finding Unique Element
   - Circular Linked List
-    - check circular
+    - Checking Circular LinkedList or not
   - Doubly Linked List
 
 Heap:
