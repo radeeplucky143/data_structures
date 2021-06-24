@@ -1,5 +1,5 @@
 # data_structures
-Linked List :
+## Linked List :
 
   The operations that should be performed on linked list are Deletion, Insertion and Searching.
 
@@ -11,7 +11,7 @@ Linked List :
     - Checking Circular LinkedList or not
   - Doubly Linked List
 
-Heap:
+## Heap:
 
   Heap follows the binary tree implementation which max/ min element should be as root node
   
