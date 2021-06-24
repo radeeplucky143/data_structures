@@ -11,13 +11,8 @@ def find_unique_element(linked_list):
         while temp_node:
             unique_value = unique_value ^ temp_node.data
             temp_node = temp_node.next
-        return unique_value
+        print("Unique Element in this Linked List : {}".format(unique_value))
 
-nodes = int(input("Enter the number of nodes: "))
-linked_list = SingleLinkedList()
-for _ in range(nodes):
-    linked_list.insert_back(int(input("Enter the data : ")))
 
-print("Unique element: {}".format(find_unique_element(linked_list)))
 
 
