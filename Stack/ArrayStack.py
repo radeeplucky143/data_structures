@@ -18,6 +18,8 @@ class ArrayStack:
     def peek(self):
         if self.items:
             print("Top Element: {}".format(self.items[-1]))
+        else:
+            print("Stack was Empty")
 
 
     def isEmpty(self):
