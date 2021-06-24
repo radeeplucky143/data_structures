@@ -1,2 +1,5 @@
 # data_structures
-All data strcutures written in python language
+Linked List 
+- Single Linked List
+- Circular Linked List
+- Doubly Linked List
