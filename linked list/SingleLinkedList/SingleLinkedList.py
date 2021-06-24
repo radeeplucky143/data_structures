@@ -42,7 +42,7 @@ class SingleLinkedList:
                     if next_node is None:
                         self.tail = new_node
                     insert = True
-                    break
+                    return
                 count+=1
                 temp_node = temp_node.next
             if not insert:
