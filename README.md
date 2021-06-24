@@ -8,4 +8,5 @@ Linked List :
   - Reversing Linked List
   - Finding Unique Element
 - Circular Linked List
+  - check circular
 - Doubly Linked List
