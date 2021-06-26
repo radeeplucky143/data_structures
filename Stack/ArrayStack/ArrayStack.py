@@ -4,32 +4,35 @@ class ArrayStack:
         self.items = list()
 
 
-    def push(self,data):
+    def push(self, data):
         self.items.append(data)
 
 
     def pop(self):
         if self.items:
             del self.items[-1]
-        else:
-            print("Stack was Empty")
+            return
+        print("Stack is Empty")
 
 
     def peek(self):
         if self.items:
             print("Top Element: {}".format(self.items[-1]))
-        else:
-            print("Stack was Empty")
+            return
+        print("Stack is Empty")
 
 
     def isEmpty(self):
         if self.items:
-            print("not Empty")
+            print("Stack is not Empty")
             return
-        print("Empty")
+        print("Stack is Empty")
 
 
     def print_stack(self):
-        for ele in self.items:
-            print(ele, end=' ')
-        print(end='\n')
+        if self.items:
+            for ele in self.items:
+                print(ele, end=' ')
+            print(end='\n')
+            return
+        print("Stack is Empty")

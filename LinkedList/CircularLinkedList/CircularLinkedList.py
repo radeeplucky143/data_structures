@@ -37,30 +37,72 @@ class CircularLinkedList:
 
 
     def insert_pos(self, data, pos):
-        if pos <= 0:
-            print("Incorrect position entered")
-            print("Position starts from 1 onwards")
-            return
-        if pos == 1:
-            self.insert_front(data)
-        else:
-            count = 1
-            prev_node = self.head
-            temp_node = self.head.next
-            insert = False
-            new_node = Node(data)
-            while prev_node and count < pos:
-                if temp_node != self.head:
-                    if count == pos-1:
-                        prev_node.next = new_node
-                        new_node.next = temp_node
-                        if temp_node is None:
+        if pos >= 1:
+            if pos == 1:
+                self.insert_front(data)
+                return
+            else:
+                temp_node = self.head
+                count = 1
+                new_node = Node(data)
+                while temp_node:
+                    if count == pos - 1:
+                        next_node = temp_node.next
+                        temp_node.next = new_node
+                        new_node.next = next_node
+                        if next_node == self.head:
                             self.tail = new_node
                         return
+                    count += 1
+                    temp_node = temp_node.next
+                    if temp_node == self.head:
+                        break
+        print("Index out of bounds")
+
+
+    def search(self, data):
+        temp_node = self.head
+        position = 1
+        while temp_node:
+            if temp_node.data == data:
+                print("{} number  found at {} position ".format(data, position))
+                return
+            position += 1
+            temp_node = temp_node.next
+            if temp_node == self.head:
+                break
+        print("Element not found")
+
+
+    def search_all(self, data):
+        temp_node = self.head
+        position = 1
+        found = False
+        while temp_node:
+            if temp_node.data == data:
+                print("Element found at {} position ".format(position))
+                found = True
+            position += 1
+            temp_node = temp_node.next
+            if temp_node == self.head:
+                break
+        if not found:
+            print("Element not found")
+
+
+    def search_pos(self, pos):
+        if pos >= 1:
+            temp_node = self.head
+            count = 1
+            while temp_node:
+                if count == pos:
+                    print("Element at {} position : {}".format(pos, temp_node.data))
+                    return
+                count += 1
                 temp_node = temp_node.next
-                prev_node = prev_node.next       
-            if not insert:
-                print("Position out of bounds")
+                if temp_node == self.head:
+                    break
+        print("Index out of Bounds")
 
 
     def print_list(self):
@@ -70,18 +112,19 @@ class CircularLinkedList:
             temp_node = temp_node.next
             if temp_node == self.head:
                 break
-        print("NULL")
+        if self.head:
+            print("HEAD")
+        else:
+            print("NULL")
 
 
     def get_head(self):
         if self.head:
-            print("Head of the linked_list : {}".format(self.head.data))
-            return
-        print("Linked list was Empty")
+            return self.head.data
+        return None
 
 
     def get_tail(self):
         if self.tail:
-            print("Tail of the linked list: {}".format(self.tail.data))
-            return
-        print("Linked list was empty")
+            return self.tail.data
+        return None

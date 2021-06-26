@@ -22,33 +22,6 @@ class SingleLinkedList:
             self.head = new_node
 
 
-    def insert_pos(self, data, pos):
-        if pos <= 0:
-            print("Incorrect position entered")
-            print("Position value starts fom 1 onwards .....")
-            return
-        if pos ==1:
-            self.insert_front(data)
-        else:
-            temp_node = self.head
-            count = 1
-            insert = False
-            new_node = Node(data)
-            while temp_node and count<pos:
-                if count == pos-1:
-                    next_node = temp_node.next
-                    temp_node.next = new_node
-                    new_node.next = next_node
-                    if next_node is None:
-                        self.tail = new_node
-                    insert = True
-                    return
-                count+=1
-                temp_node = temp_node.next
-            if not insert:
-                print("position entered was out of bounds")      
-
-
     def insert_back(self, data):
         new_node = Node(data)
         if self.head is None:
@@ -59,19 +32,38 @@ class SingleLinkedList:
             self.tail = new_node
 
 
+    def insert_pos(self, data, pos):
+        if pos >= 1:
+            if pos == 1:
+                self.insert_front(data)
+                return
+            else:
+                temp_node = self.head
+                count = 1
+                new_node = Node(data)
+                while temp_node:
+                    if count == pos - 1:
+                        next_node = temp_node.next
+                        temp_node.next = new_node
+                        new_node.next = next_node
+                        if next_node is None:
+                            self.tail = new_node
+                        return
+                    count += 1
+                    temp_node = temp_node.next
+        print("Index out of bounds")
+
+
     def search(self, data):
         temp_node = self.head
         position = 1
-        found = False
         while temp_node:
             if temp_node.data == data:
-                print("Element found at position {}".format(position))
-                found = True
-                break
+                print("{} number  found at position {}".format(data, position))
+                return
             position += 1
             temp_node = temp_node.next
-        if not found:
-            print("Element not found")
+        print("Element not found")
 
 
     def search_all(self, data):
@@ -80,30 +72,28 @@ class SingleLinkedList:
         found = False
         while temp_node:
             if temp_node.data == data:
-                print("Element found at position {}".format(position))
+                print("{} number found at position {}".format(data, position))
                 found = True
             position += 1
             temp_node = temp_node.next
         if not found:
             print("Element not found")
 
+
     def search_pos(self, pos):
-        if pos <= 0:
-            print("Incorrect position entered")
-            print("Position value starts from 1 onwards ...")
-            return
-        temp_node = self.head
-        count = 1
-        while temp_node:
-            if count == pos:
-                print("The value at this position was {}".format(temp_node.data))
-                return
-            count+=1
-            temp_node = temp_node.next
-        print("Entered position was out of bounds")
+        if pos >= 1:
+            temp_node = self.head
+            count = 1
+            while temp_node:
+                if count == pos:
+                    print("Element at {} position : {}".format(pos, temp_node.data))
+                    return
+                count += 1
+                temp_node = temp_node.next
+        print("Index out of Bounds")
 
 
-    def delete_all(self,data):
+    def delete_all(self, data):
         if self.head is None:
             print("Linked list was empty")
             return
@@ -120,6 +110,7 @@ class SingleLinkedList:
         while temp_node:
             if temp_node.data == data:
                 if temp_node.next is None:
+
                     print("Element successfully deleted at tail position")
                     delete = True
                     self.tail = prev_node
@@ -151,7 +142,7 @@ class SingleLinkedList:
             temp_node = self.head
             count = 1
             delete = False
-            while temp_node and count<pos:
+            while temp_node and count < pos:
                 if count == pos-1:
                     if temp_node.next:
                         deleted_node = temp_node.next
@@ -160,9 +151,9 @@ class SingleLinkedList:
                         delete = True
                         if temp_node.next is None:
                             self.tail = temp_node
-                count+=1
+                count += 1
                 temp_node = temp_node.next
-        if pos >1 and not delete:
+        if pos > 1 and not delete:
             print("Entered position out of bounds")
                         
 
@@ -176,7 +167,7 @@ class SingleLinkedList:
 
     def delete_tail(self):
         if self.tail is None:
-            print("Linkedlist was empty")
+            print("LinkedList was empty")
         elif self.head == self.tail:
             self.head = self.tail = None
         else:
@@ -196,19 +187,17 @@ class SingleLinkedList:
 
     def get_head(self):
         if self.head:
-            print("Head of the linked_list: {}".format(self.head.data))
-        else:
-            print("Linkedlist was empty")
+            return self.head.data
+        return None
 
 
     def get_tail(self):
         if self.tail:
-            print("Tail of the linked_list: {}".format(self.tail.data))
-        else:
-            print("Linkedlist was empty")
+            return self.tail.data
+        return None
 
 
-    def delete(self,data):
+    def delete(self, data):
         if self.head is None:
             print("Linked list was empty")
             return
@@ -241,11 +230,3 @@ class SingleLinkedList:
             temp_node = temp_node.next
         if not delete:
             print("Element not found")
-
-    
-
-
-
-    
-
-
