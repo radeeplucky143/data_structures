@@ -37,3 +37,8 @@
 
   - ArrayStack
   - LinkedListStack
+
+   The following functions are implemented in Stacks:
+   
+    push()  pop()   peek()
+    print_stack()   isEmpty()
