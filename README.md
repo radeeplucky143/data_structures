@@ -1,7 +1,7 @@
 # data_structures
 ## Linked List :
 
-  - SinngleLinkedList
+  - SingleLinkedList
   - CircularLinkedList
   - DoublyLinkedList
 
@@ -12,7 +12,7 @@
   
     get_head()      get_tail()     print_list()
     insert_front()  insert_back()  insert_pos()
-    search()        serach_all()   search_pos()
+    search()        search_all()   search_pos()
     delete()        delete_all()   delete_pos()
     delete_head()   delete_tail()
     
