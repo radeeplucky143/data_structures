@@ -25,5 +25,3 @@ def find_unique_element(linked_list):
         print("Unique Element in this Linked List : {}".format(unique_value))
         return
     print("Linked List is Empty")
-
-
