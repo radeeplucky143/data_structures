@@ -2,17 +2,34 @@ import sys
 from os.path import dirname, abspath
 
 sys.path.append(dirname(abspath(__file__)))
-from SingleLinkedList import SingleLinkedList
+from SingleLinkedList.SingleLinkedList import SingleLinkedList
+from CircularLinkedList.CircularLinkedList import CircularLinkedList
+from DoublyLinkedList.DoublyLinkedList import DoublyLinkedList
 
 """
-     Finding the unique Element in Single Linked List 
+     Finding the unique Element in Linked List
+     Unique Element can be find out only if we pass odd number of elements and only one value should be unique 
+     otherwise function doesn't return proper result.
 """
 
 
 def find_unique_element(linked_list):
-    unique_value = 0
-    temp_node = linked_list.head
-    while temp_node:
-        unique_value = unique_value ^ temp_node.data
-        temp_node = temp_node.next
-    print("Unique Element in this Linked List : {}".format(unique_value))
+    if linked_list.head:
+        unique_value = 0
+        temp_node = linked_list.head
+        while temp_node:
+            unique_value = unique_value ^ temp_node.data
+            temp_node = temp_node.next
+            if temp_node.next == linked_list.head:
+                break
+        print("Unique Element in this Linked List : {}".format(unique_value))
+        return
+    print("Linked List is Empty")
+
+
+nodes = int(input("Enter no of nodes: "))
+linked_list1 = CircularLinkedList()
+for _ in range(nodes):
+    linked_list1.insert_front(int(input("Enter the data value: ")))
+
+find_unique_element(linked_list1)
