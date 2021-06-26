@@ -27,9 +27,3 @@ def find_unique_element(linked_list):
     print("Linked List is Empty")
 
 
-nodes = int(input("Enter no of nodes: "))
-linked_list1 = CircularLinkedList()
-for _ in range(nodes):
-    linked_list1.insert_front(int(input("Enter the data value: ")))
-
-find_unique_element(linked_list1)
