@@ -1,9 +1,10 @@
 import sys
 from os.path import dirname, abspath
 
-sys.path.append(dirname(dirname(abspath(__file__))))
+sys.path.append(dirname(abspath(__file__)))
 from SingleLinkedList.SingleLinkedList import SingleLinkedList
-from CircularLinkedList import CircularLinkedList
+from CircularLinkedList.CircularLinkedList import CircularLinkedList
+from DoublyLinkedList.DoublyLinkedList import DoublyLinkedList
 
 """
      Checking whether the linked list is circular or not
@@ -20,5 +21,3 @@ def check_circular(linked_list):
         print("Linked list was Linear")
         return
     print("Linked List was Empty")
-
-

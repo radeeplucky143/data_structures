@@ -105,6 +105,31 @@ class CircularLinkedList:
         print("Index out of Bounds")
 
 
+    def delete_head(self):
+        if self.head:
+            if self.head == self.tail:
+                self.head = self.tail = None
+            else:
+                self.head = self.head.next
+                self.tail.next = self.head
+            return
+        print("Linked List is Empty")
+
+
+    def delete_tail(self):
+        if self.tail:
+            if self.head == self.tail:
+                self.head = self.tail = None
+            else:
+                temp_node = self.head
+                while temp_node.next != self.tail:
+                    temp_node = temp_node.next
+                self.tail = temp_node
+                self.tail.next = self.head
+            return
+        print("Linked List is Empty")
+
+
     def print_list(self):
         temp_node = self.head
         while temp_node:

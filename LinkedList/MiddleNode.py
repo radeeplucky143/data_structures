@@ -2,7 +2,9 @@ import sys
 from os.path import dirname, abspath
 
 sys.path.append(dirname(abspath(__file__)))
-from SingleLinkedList import SingleLinkedList
+from SingleLinkedList.SingleLinkedList import SingleLinkedList
+from CircularLinkedList.CircularLinkedList import CircularLinkedList
+from DoublyLinkedList.DoublyLinkedList import DoublyLinkedList
 
 """
       For the even number of nodes in a linked list we can select any one of the two middle nodes
@@ -10,14 +12,17 @@ from SingleLinkedList import SingleLinkedList
 """
 
 def get_second_middle_node(linked_list):
-    first_ptr = linked_list.head
-    second_ptr = linked_list.head
-    while second_ptr.next:
-        first_ptr = first_ptr.next
-        second_ptr = second_ptr.next
-        if second_ptr.next:
+    if linked_list.head:
+        first_ptr = linked_list.head
+        second_ptr = linked_list.head
+        while second_ptr.next and second_ptr != linked_list.head:
+            first_ptr = first_ptr.next
             second_ptr = second_ptr.next
-    print(first_ptr.data)
+            if second_ptr.next:
+                second_ptr = second_ptr.next
+        print(first_ptr.data)
+    print("Linked List is Empty")
+
 
 def get_first_middle_node(linked_list):
     first_ptr = linked_list.head
@@ -28,12 +33,3 @@ def get_first_middle_node(linked_list):
             first_ptr = first_ptr.next
             second_ptr = second_ptr.next
     print(first_ptr.data)
-
-
-nodes = int(input("Enter number of nodes: "))
-single_linked_list = SingleLinkedList()
-for _ in range(nodes):
-    single_linked_list.insert_back(int(input("Enter the data : ")))
-
-get_first_middle_node(single_linked_list)
-get_second_middle_node(single_linked_list)

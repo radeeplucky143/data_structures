@@ -93,89 +93,110 @@ class SingleLinkedList:
         print("Index out of Bounds")
 
 
-    def delete_all(self, data):
-        if self.head is None:
-            print("Linked list was empty")
-            return
-        delete = False
-        if self.head.data == data:
-            print("Element successfully deleted at head position")
-            delete = True
+    def delete_head(self):
+        if self.head:
             if self.head == self.tail:
                 self.head = self.tail = None
             else:
                 self.head = self.head.next
-        prev_node = self.head
-        temp_node = self.head.next
-        while temp_node:
-            if temp_node.data == data:
-                if temp_node.next is None:
-
-                    print("Element successfully deleted at tail position")
-                    delete = True
-                    self.tail = prev_node
-                    self.tail.next = None
-                    return 
-                else:
-                    print("Element successfully deleted")
-                    delete = True
-                    prev_node.next = temp_node.next
-                    temp_node = temp_node.next
-            else:
-                prev_node = temp_node
-                temp_node = temp_node.next
-        if not delete:
-            print("Element not found")
-
-    def delete_pos(self, pos):
-        if pos <= 0:
-            print("Incorrect position entered")
-            print("Position value starts from 1 onwards ...")
             return
-        if pos == 1:
-            if self.head:
-                if self.head == self.tail:
-                    self.head = self.tail = None
-                else:
-                    self.head = self.head.next
-        else:
-            temp_node = self.head
-            count = 1
-            delete = False
-            while temp_node and count < pos:
-                if count == pos-1:
-                    if temp_node.next:
-                        deleted_node = temp_node.next
-                        temp_node.next = deleted_node.next
-                        del deleted_node
-                        delete = True
-                        if temp_node.next is None:
-                            self.tail = temp_node
-                count += 1
-                temp_node = temp_node.next
-        if pos > 1 and not delete:
-            print("Entered position out of bounds")
-                        
+        print("LinkedList was empty")
 
-    def delete_head(self):
-        if self.head is None:
-            print("Linkedlist was empty")
-        elif self.head == self.tail:
-            self.head = self.tail = None
-        else:
-            self.head = self.head.next
 
     def delete_tail(self):
-        if self.tail is None:
-            print("LinkedList was empty")
-        elif self.head == self.tail:
-            self.head = self.tail = None
-        else:
-            temp_node = self.head
-            while temp_node.next != self.tail:
-                temp_node = temp_node.next
-            self.tail = temp_node
-            self.tail.next = None
+        if self.tail:
+            if self.head == self.tail:
+                self.head = self.tail = None
+            else:
+                temp_node = self.head
+                while temp_node.next != self.tail:
+                    temp_node = temp_node.next
+                self.tail = temp_node
+                self.tail.next = None
+            return
+        print("LinkedList was empty")
+
+
+    def delete(self, data):
+        if self.head:
+            if self.head.data == data:
+                self.delete_head()
+                print("Deleted at Head Position")
+                return
+            else:
+                prev_node = self.head
+                temp_node = self.head.next
+                while temp_node:
+                    if temp_node.data == data:
+                        if temp_node.next:
+                            next_node = temp_node.next
+                            prev_node.next = next_node
+                            del temp_node
+                            print("Deleted Successfully")
+                        else:
+                            self.delete_tail()
+                            print("Deleted at Tail position")
+                        return
+                    prev_node = temp_node
+                    temp_node = temp_node.next
+            print("Element not Found")
+            return
+        print("Linked List was Empty")
+
+
+    def delete_all(self, data):
+        if self.head:
+            operation = False
+            if self.head.data == data:
+                self.delete_head()
+                operation = True
+                print("Deleted at Head Position")
+            prev_node = self.head
+            temp_node = self.head.next
+            while temp_node:
+                if temp_node.data == data:
+                    operation = True
+                    if temp_node.next:
+                        next_node = temp_node.next
+                        prev_node.next = next_node
+                        print("Deleted Successfully")
+                    else:
+                        self.delete_tail()
+                        print("Deleted at Tail position")
+                        return
+                    temp_node = next_node
+                else:
+                    prev_node = temp_node
+                    temp_node = temp_node.next
+            if not operation:
+                print("Element not Found")
+            return
+        print("Linked List was Empty")
+
+
+    def delete_pos(self, pos):
+        if pos >= 1:
+            if pos == 1:
+                self.delete_head()
+                return
+            else:
+                count = 1
+                temp_node = self.head
+                while temp_node:
+                    if count == pos - 1:
+                        if temp_node.next:
+                            next_node = temp_node.next.next
+                            temp_node.next = next_node
+                            if next_node is None:
+                                self.tail = temp_node
+                            return
+                        break
+                    temp_node = temp_node.next
+                    count += 1
+            print("Index out of Bounds")
+            return
+        print("Index out of Bounds")
+
 
     def print_list(self):
         temp_node = self.head
@@ -195,38 +216,3 @@ class SingleLinkedList:
         if self.tail:
             return self.tail.data
         return None
-
-
-    def delete(self, data):
-        if self.head is None:
-            print("Linked list was empty")
-            return
-        delete = False
-        if self.head.data == data:
-            print("Element successfully deleted at head position")
-            delete = True
-            if self.head == self.tail:
-                self.head = self.tail = None
-            else:
-                self.head = self.head.next
-            return
-        prev_node = self.head
-        temp_node = self.head.next
-        while temp_node:
-            if temp_node.data == data:
-                if temp_node.next is None:
-                    print("Element successfully deleted at tail position")
-                    delete = True
-                    self.tail = prev_node
-                    self.tail.next = None
-                    return 
-                else:
-                    print("Element successfully deleted")
-                    delete = True
-                    prev_node.next = temp_node.next
-                    temp_node = temp_node.next
-                    return
-            prev_node = temp_node
-            temp_node = temp_node.next
-        if not delete:
-            print("Element not found")
