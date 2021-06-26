@@ -123,7 +123,11 @@ class DoublyLinkedList:
     def delete(self, data):
         if self.head:
             if self.head.data == data:
-                self.delete_head()
+                if self.head == self.tail:
+                    self.head = self.tail = None
+                else:
+                    self.head = self.head.next
+                    self.head.prev = None
                 print("Deleted at Head Position")
                 return
             else:

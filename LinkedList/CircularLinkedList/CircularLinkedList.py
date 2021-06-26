@@ -130,6 +130,98 @@ class CircularLinkedList:
         print("Linked List is Empty")
 
 
+    def delete(self, data):
+        if self.head:
+            if self.head.data == data:
+                print("Deletion at head Successful")
+                if self.head == self.tail:
+                    self.head = self.tail = None
+                else:
+                    self.head = self.head.next
+                    self.tail.next = self.head
+                return
+            else:
+                prev_node = self.head
+                temp_node = self.head.next
+                while temp_node:
+                    if temp_node.data == data:
+                        next_node = temp_node.next
+                        prev_node.next = next_node
+                        del temp_node
+                        if next_node == self.head:
+                            self.tail = prev_node
+                            print("Deletion at tail successful")
+                        else:
+                            print("Deletion successful")
+                        return
+                    prev_node = temp_node
+                    temp_node = temp_node.next
+                    if temp_node == self.head:
+                        break
+            print("Element not Found")
+            return
+        print("Linked List was Empty")
+
+
+    def delete_all(self, data):
+        if self.head:
+            operation = False
+            if self.head.data == data:
+                operation = True
+                print("Deletion at head Successful")
+                if self.head == self.tail:
+                    self.head = self.tail = None
+                else:
+                    self.head = self.head.next
+                    self.tail.next = self.head
+            prev_node = self.head
+            temp_node = self.head.next
+            while temp_node:
+                if temp_node.data == data:
+                    operation = True
+                    next_node = temp_node.next
+                    prev_node.next = next_node
+                    if next_node == self.head:
+                        self.tail = prev_node
+                        print("Deletion at tail successful")
+                        return
+                    else:
+                        temp_node = next_node
+                        print("Deletion successful")
+                else:
+                    prev_node = temp_node
+                    temp_node = temp_node.next
+                if temp_node == self.head:
+                    break
+            if not operation:
+                print("Element not Found")
+            return
+        print("Linked List was Empty")
+
+
+    def delete_pos(self, pos):
+        if pos >= 1:
+            if pos == 1:
+                self.delete_head()
+                return
+            else:
+                count = 1
+                temp_node = self.head
+                while temp_node:
+                    if count == pos - 1:
+                        if temp_node.next != self.head:
+                            next_node = temp_node.next.next
+                            temp_node.next = next_node
+                            if next_node == self.head:
+                                self.tail = temp_node
+                            return
+                        break
+                    temp_node = temp_node.next
+                    count += 1
+            print("Index out of Bounds")
+            return
+        print("Index out of Bounds")
+
     def print_list(self):
         temp_node = self.head
         while temp_node:
