@@ -28,6 +28,9 @@ class SingleLinkedList:
 
 
     def insert_front(self, data):
+        """
+                Attach the Node to the front of LinkedList.
+        """
         if self.data_type is not None:
             if isinstance(self.data_type, data):
                 print("Data should be of type : {}".format(self.data_type))
@@ -42,6 +45,10 @@ class SingleLinkedList:
 
 
     def insert_back(self, data):
+        if self.data_type is not None:
+            if isinstance(self.data_type, data):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
