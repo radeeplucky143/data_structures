@@ -1,9 +1,9 @@
 # data_structures
 ## Linked List :
 
-  - SingleLinkedList
-  - CircularLinkedList
-  - DoublyLinkedList
+  - SingleLinkedList/
+  - CircularLinkedList/
+  - DoublyLinkedList/
 
   The operations that should be performed on linked list are Deletion, Insertion and Searching.
   
@@ -23,22 +23,5 @@
   - Finding Unique Element
   - Checking Circular LinkedList or not
 
-## Heap:
 
-  Heap follows the binary tree implementation which max/ min element should be as root node
   
-  - MaxHeap
-  - MinHeap
-
-
-## Stack:
-
-  Stack data strcuture follows the (LIFO) Last In First Out
-
-  - ArrayStack
-  - LinkedListStack
-
-   The following functions are implemented in Stacks:
-   
-    push()  pop()   peek()
-    print_stack()   isEmpty()
