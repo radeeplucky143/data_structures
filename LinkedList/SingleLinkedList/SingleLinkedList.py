@@ -29,7 +29,7 @@ class SingleLinkedList:
 
     def insert_front(self, data):
         """
-                Attach the Node to the front of LinkedList.
+                Node inserted to the front side of LinkedList.
         """
         if self.data_type is not None:
             if isinstance(self.data_type, data):
