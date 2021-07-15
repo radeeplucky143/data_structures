@@ -7,7 +7,10 @@ from CircularLinkedList.CircularLinkedList import CircularLinkedList
 from DoublyLinkedList.DoublyLinkedList import DoublyLinkedList
 
 """
-      This program is used to reverse the linked list of any type 
+      This program is used to reverse the following LinkedList's :
+                    SingleLinkedList
+                    CircularLinkedList
+                    DoublyLinkedList
 """
 
 
@@ -25,7 +28,7 @@ def reverse_list(linked_list):
         while temp_node:
             reversed_list.insert_back(temp_node.data)
             temp_node = temp_node.next
-            if temp_node.next == linked_list.head:
+            if temp_node == linked_list.head:
                 break
         return reversed_list
     elif isinstance(linked_list, DoublyLinkedList):
@@ -36,4 +39,4 @@ def reverse_list(linked_list):
             temp_node = temp_node.next
         return reversed_list
     else:
-        print("Incorrect Arguement Passed")
+        print("Incorrect Instance passed as Arguement")
