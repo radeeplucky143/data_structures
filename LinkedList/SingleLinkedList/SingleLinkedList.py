@@ -1,15 +1,25 @@
 class Node:
-    
+    """
+         Class used to create Node:
+                    data : any one data type ['str','int','float']
+                    next : Pointer pointing to the next node
+    """
     def __init__(self, data):
         self.data = data
         self.next = None
 
 
 class SingleLinkedList:
-    
+    """
+        Class used to create a SingleLinkedList Data Structure
+                head : pointing to the First Element(If present)
+                tail : pointing to the Last Element(If present)
+                data_type:  type of the Data Inserted into the nodes (only Single Datatype Should be maintained across the LinkedList)
+    """
     def __init__(self):
         self.head = None
         self.tail = None
+        self.data_type = None
 
 
     def insert_front(self, data):
