@@ -7,7 +7,11 @@ from CircularLinkedList.CircularLinkedList import CircularLinkedList
 from DoublyLinkedList.DoublyLinkedList import DoublyLinkedList
 
 """
-     Checking whether the linked list is circular or not
+     check_circular function is used to check whether the linked_list was circular or not 
+     It returns three values based upon the scenarios:
+            LinkedList was Empty
+            LinkedList was Linear
+            LinkedList was Circular
 """
 
 def check_circular(linked_list):
