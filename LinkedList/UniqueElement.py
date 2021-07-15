@@ -20,7 +20,7 @@ def find_unique_element(linked_list):
         while temp_node:
             unique_value = unique_value ^ temp_node.data
             temp_node = temp_node.next
-            if temp_node.next == linked_list.head:
+            if temp_node == linked_list.head:
                 break
         print("Unique Element in this Linked List : {}".format(unique_value))
         return

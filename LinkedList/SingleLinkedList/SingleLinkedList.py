@@ -1,8 +1,10 @@
 class Node:
-    """
-         Class used to create Node:
-                    data : any one data type ['str','int','float']
-                    next : Pointer pointing to the next node
+    """     Class used to create Node:
+                    : data(param)  ==  used to store the value
+                    : next(param)  ==  Pointer pointing to next Node
+
+                    : next(type)     ==  Node(class)
+                    : data(type)     ==  int,float,str
     """
     def __init__(self, data):
         self.data = data
@@ -10,11 +12,14 @@ class Node:
 
 
 class SingleLinkedList:
-    """
-        Class used to create a SingleLinkedList Data Structure
-                head : pointing to the First Element(If present)
-                tail : pointing to the Last Element(If present)
-                data_type:  type of the Data Inserted into the nodes (only Single Datatype Should be maintained across the LinkedList)
+    """      Class used to create a SingleLinkedList Data Structure
+                    : head(param)   ==  Pointing to First Element of SLL
+                    : tail(param)     ==  Pointing to Last Element of SLL
+                    : data_type(param)  ==  stores the Node data type
+
+                    : head(type)  == Node(class)
+                    : tail(type)    ==  Node(class)
+                    : data_type(type)  == int,float,str
     """
     def __init__(self):
         self.head = None
@@ -23,6 +28,10 @@ class SingleLinkedList:
 
 
     def insert_front(self, data):
+        if self.data_type is not None:
+            if isinstance(self.data_type, data):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         new_node = Node(data)
         if self.head is None:
             self.head = new_node
@@ -187,16 +196,16 @@ class SingleLinkedList:
         print("Linked List was Empty")
 
 
-    def delete_pos(self, pos):
-        if pos >= 1:
-            if pos == 1:
+    def delete_pos(self, position):
+        if position >= 1:
+            if position == 1:
                 self.delete_head()
                 return
             else:
                 count = 1
                 temp_node = self.head
                 while temp_node:
-                    if count == pos - 1:
+                    if count == position - 1:
                         if temp_node.next:
                             next_node = temp_node.next.next
                             temp_node.next = next_node
@@ -220,12 +229,8 @@ class SingleLinkedList:
 
 
     def get_head(self):
-        if self.head:
-            return self.head.data
-        return None
+        return self.head.data
 
 
     def get_tail(self):
-        if self.tail:
-            return self.tail.data
-        return None
+        return self.tail.data
