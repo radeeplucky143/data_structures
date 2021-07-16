@@ -364,7 +364,7 @@ class CircularLinkedList:
                                 self.tail = temp_node
                                 print(f"\033[32mDeletion at Tail Successful\033[0m")
                                 return
-                            print("\033[32mDeletion at {}{} position successful\033[0m".format(position,self.get_suffix(position)))
+                            print("\033[32mDeletion at {}{} position successful\033[0m".format(position, self.get_suffix(position)))
                             return
                         break
                     temp_node = temp_node.next
@@ -379,7 +379,8 @@ class CircularLinkedList:
         """
         temp_node = self.head
         while temp_node:
-            print("\033[34m{}->".format(temp_node.data), end="") = temp_node.next
+            print("\033[34m{}->".format(temp_node.data), end="")
+            temp_node = temp_node.next
             if temp_node == self.head:
                 break
         if self.head:
