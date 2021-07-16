@@ -27,13 +27,33 @@ class SingleLinkedList:
         self.data_type = None
 
 
+    def set_data_type(self, data):
+        """
+              This Function is used to set the data_type attribute
+              which helps in maintaining the same data type along the LinkedList.
+        """
+        if isinstance(data, int):
+            self.data_type = int
+        elif isinstance(data, float):
+            self.data_type = float
+        elif isinstance(data, str):
+            self.data_type = str
+        else:
+            print("DataTypes should be [int,float,str]")
+
+
     def insert_front(self, data):
+        """
+               This function is used to Insert the Node at front and make sure the inserted Node
+               contains the data with same data type.
+        """
         if self.data_type is not None:
-            if isinstance(self.data_type, data):
+            if isinstance(data, self.data_type):
                 print("Data should be of type : {}".format(self.data_type))
                 return
         new_node = Node(data)
         if self.head is None:
+            self.set_data_type(data)
             self.head = new_node
             self.tail = self.head
         else:
@@ -42,12 +62,17 @@ class SingleLinkedList:
 
 
     def insert_back(self, data):
+        """
+              This function is used to Insert the Node at back and make sure the inserted Node
+               contains the data with same data type.
+        """
         if self.data_type is not None:
-            if isinstance(self.data_type, data):
+            if isinstance(data, self.data_type):
                 print("Data should be of type : {}".format(self.data_type))
                 return
         new_node = Node(data)
         if self.head is None:
+            self.set_data_type(data)
             self.head = new_node
             self.tail = self.head
         else:
@@ -55,9 +80,9 @@ class SingleLinkedList:
             self.tail = new_node
 
 
-    def insert_pos(self, data, pos):
-        if pos >= 1:
-            if pos == 1:
+    def insert_pos(self, data, position):
+        if position >= 1:
+            if position == 1:
                 self.insert_front(data)
                 return
             else:
@@ -65,7 +90,7 @@ class SingleLinkedList:
                 count = 1
                 new_node = Node(data)
                 while temp_node:
-                    if count == pos - 1:
+                    if count == position - 1:
                         next_node = temp_node.next
                         temp_node.next = new_node
                         new_node.next = next_node
