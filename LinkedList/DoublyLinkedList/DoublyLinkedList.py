@@ -1,35 +1,112 @@
 class Node:
+    """     Class used to create Node:
+                        : data(param)  ==  used to store data
+                        : next(param)  ==  Pointer pointing to next Node
+                        : prev(param) == Pointer pointing to prev Node
 
+                        : next(type)     ==  Node(class)
+                        : prev(type)     ==  Node(class)
+                        : data(type)     ==  int, str
+    """
     def __init__(self, data):
         self.data = data
         self.prev = None
         self.next = None
 
 class DoublyLinkedList:
+    """      Class used to create a DoublyLinkedList Data Structure
+                        : head(param)   ==  Pointing to First Node of DLL
+                        : tail(param)     ==  Pointing to Last Node of DLL
+                        : data_type(param)  ==  stores the datatype of data inside Node
 
+                        : head(type)  == Node(class)
+                        : tail(type)    ==  Node(class)
+                        : data_type(type)  == int, str
+    """
     def __init__(self):
+        """     created DoublyLinkedList and initializes the head, tail, data_type to None.
+        """
         self.head = None
         self.tail = None
+        self.data_type = None
+        print("\033[32mSingleLinkedList created successfully\033[0m")
+
+    @staticmethod
+    def get_suffix(position):
+        """ This method is used to provide suffix for the Integers like 1st,2nd,3rd,4th etc...
+        """
+        if position == 1:
+            return 'st'
+        elif position == 2:
+            return 'nd'
+        elif position == 3:
+            return 'rd'
+        else:
+            return 'th'
+
+    def set_data_type(self, data):
+        """  This Function is used to set the value to data_type attribute
+              which helps in maintaining the same data type across the LinkedList.
+                        : data(param)   ==  Inserted value
+                        : data(type)      ==   int,str
+        """
+        if isinstance(data, int):
+            self.data_type = int
+        elif isinstance(data, str):
+            self.data_type = str
+        else:
+            print(
+                f"\033[31mValueError for {__name__} class variable : data_type   Expected DataTypes : [int, str]\033[0m\n")
+
+
+    def check_data_type(self, data):
+        """     This function is used to check whether the inserted data is
+                    same as LinkedList data type or not.
+        """
+        if self.data_type is not None:
+            if not isinstance(data, self.data_type):
+                print("\033[31mValueError for Arguement : 'data'  Expected DataType: {}\033[0m".format(self.data_type))
+                return False
+        return True
 
 
     def insert_front(self, data):
+        """   This function is used to Insert the Node at front and make sure the inserted Node
+                       contains the data with same data type.
+                                    : data(param)   ==  Inserted value
+                                    : data(type)      ==   int,str
+        """
+        if not self.check_data_type(data):
+            return
         new_node = Node(data)
         if self.head:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
         else:
+            self.set_data_type(data)
             self.head = self.tail = new_node
+        print(f"\033[32mInsertion at Head Successful\033[0m")
 
 
     def insert_back(self, data):
+        """   This function is used to Insert the Node at back and make sure the inserted Node
+                       contains the data with same data type.
+                                        : data(param)   ==  Inserted value
+                                        : data(type)      ==   int,str,float
+        """
+        if not self.check_data_type(data):
+            return
         new_node = Node(data)
         if self.head:
             self.tail.next = new_node
             new_node.prev = self.tail
             self.tail = new_node
+            print(f"\033[32mInsertion at Tail Successful\033[0m")
         else:
+            self.set_data_type(data)
             self.head = self.tail = new_node
+            print(f"\033[32mInsertion at Head Successful\033[0m")
 
 
     def insert_pos(self, data, pos):
