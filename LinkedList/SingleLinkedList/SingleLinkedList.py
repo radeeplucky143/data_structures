@@ -118,42 +118,63 @@ class SingleLinkedList:
 
 
     def search(self, data):
+        """
+              This Function is used to search for the first Instance matched in the LinkedList.
+        """
+        if self.data_type is not None:
+            if isinstance(data, self.data_type):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         temp_node = self.head
         position = 1
         while temp_node:
             if temp_node.data == data:
-                print("{} number  found at position {}".format(data, position))
+                print("{} Found at Position {}".format(data, position))
                 return
             position += 1
             temp_node = temp_node.next
-        print("Element not found")
+        print("{} Not Found".format(data))
 
 
     def search_all(self, data):
+        """
+              This Function is used to search for all Instances matched in the LinkedList.
+        """
+        if self.data_type is not None:
+            if isinstance(data, self.data_type):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         temp_node = self.head
         position = 1
         found = False
         while temp_node:
             if temp_node.data == data:
-                print("{} number found at position {}".format(data, position))
+                print("{} Found at Position {}".format(data, position))
                 found = True
             position += 1
             temp_node = temp_node.next
         if not found:
-            print("Element not found")
+            print("{} Not Found".format(data))
 
 
-    def search_pos(self, pos):
-        if pos >= 1:
+    def search_pos(self, position):
+        """
+                This Function is used to search for the first Instance matched in the LinkedList.
+        """
+        if self.data_type is not None:
+            if isinstance(data, self.data_type):
+                print("Data should be of type : {}".format(self.data_type))
+                return
+        if position >= 1:
             temp_node = self.head
             count = 1
             while temp_node:
-                if count == pos:
-                    print("Element at {} position : {}".format(pos, temp_node.data))
+                if count == position:
+                    print("Element at {} position : {}".format(position, temp_node.data))
                     return
                 count += 1
                 temp_node = temp_node.next
-        print("Index out of Bounds")
+        print("Position out of Bounds")
 
 
     def delete_head(self):
