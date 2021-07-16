@@ -14,7 +14,7 @@
     insert_front()  insert_back()  insert_pos()
     search()        search_all()   search_pos()
     delete()        delete_all()   delete_pos()
-    delete_head()   delete_tail()
+    delete_head()   delete_tail()  set_data_type()
     
 
  

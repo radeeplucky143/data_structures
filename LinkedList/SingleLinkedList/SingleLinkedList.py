@@ -34,6 +34,8 @@ class SingleLinkedList:
         """
               This Function is used to set the data_type attribute
               which helps in maintaining the same data type along the LinkedList.
+                        : data(param)   ==  Inserted value
+                        : data(type)      ==   int,str,float
         """
         if isinstance(data, int):
             self.data_type = int
@@ -49,6 +51,8 @@ class SingleLinkedList:
         """
                This function is used to Insert the Node at front and make sure the inserted Node
                contains the data with same data type.
+                            : data(param)   ==  Inserted value
+                            : data(type)      ==   int,str,float
         """
         if self.data_type is not None:
             if isinstance(data, self.data_type):
@@ -68,6 +72,8 @@ class SingleLinkedList:
         """
               This function is used to Insert the Node at back and make sure the inserted Node
                contains the data with same data type.
+                                : data(param)   ==  Inserted value
+                                : data(type)      ==   int,str,float
         """
         if self.data_type is not None:
             if isinstance(data, self.data_type):
@@ -87,6 +93,11 @@ class SingleLinkedList:
         """
               This function is used to Insert the Node at defined position If possible
                and make sure the inserted Node contains the data with same data type.
+                                        : data(param)   ==  Inserted value
+                                        : position(param) == position to insert
+
+                                        : data(type)      ==   int,str,float
+                                        : position(type)  == int
         """
         if self.data_type is not None:
             if isinstance(data, self.data_type):
@@ -123,6 +134,8 @@ class SingleLinkedList:
     def search(self, data):
         """
               This Function is used to search for the first Instance matched in the LinkedList.
+                                        : data(param)   ==  Inserted value
+                                        : data(type)      ==   int,str,float
         """
         if self.data_type is not None:
             if isinstance(data, self.data_type):
@@ -142,6 +155,8 @@ class SingleLinkedList:
     def search_all(self, data):
         """
               This Function is used to search for all Instances matched in the LinkedList.
+                                            : data(param)   ==  Inserted value
+                                            : data(type)      ==   int,str,float
         """
         if self.data_type is not None:
             if isinstance(data, self.data_type):
