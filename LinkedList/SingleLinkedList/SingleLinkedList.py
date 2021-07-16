@@ -4,7 +4,7 @@ class Node:
                     : next(param)  ==  Pointer pointing to next Node
 
                     : next(type)     ==  Node(class)
-                    : data(type)     ==  int,float,str
+                    : data(type)     ==  int, str
     """
     def __init__(self, data):
         self.data = data
@@ -13,13 +13,13 @@ class Node:
 
 class SingleLinkedList:
     """      Class used to create a SingleLinkedList Data Structure
-                    : head(param)   ==  Pointing to First Element of SLL
-                    : tail(param)     ==  Pointing to Last Element of SLL
+                    : head(param)   ==  Pointing to First Node of SLL
+                    : tail(param)     ==  Pointing to Last Node of SLL
                     : data_type(param)  ==  stores the datatype of data inside Node
 
                     : head(type)  == Node(class)
                     : tail(type)    ==  Node(class)
-                    : data_type(type)  == int,float,str
+                    : data_type(type)  == int, str
     """
     def __init__(self):
         """     created SingleLinkedList and initializes the head, tail, data_type to None.
@@ -38,7 +38,7 @@ class SingleLinkedList:
             return 'st'
         elif position == 2:
             return 'nd'
-        elif position ==3:
+        elif position == 3:
             return 'rd'
         else:
             return 'th'
@@ -73,7 +73,7 @@ class SingleLinkedList:
         """   This function is used to Insert the Node at front and make sure the inserted Node
                contains the data with same data type.
                             : data(param)   ==  Inserted value
-                            : data(type)      ==   int,str,float
+                            : data(type)      ==   int,str
         """
         if not self.check_data_type(data):
             return
@@ -214,7 +214,7 @@ class SingleLinkedList:
 
 
     def delete_head(self):
-        """   This Function is used to delete the head positioned Node If present.
+        """   This Function is used to delete the head  Node If present.
         """
         if self.head:
             if self.head == self.tail:
@@ -272,7 +272,7 @@ class SingleLinkedList:
                             next_node = temp_node.next
                             prev_node.next = next_node
                             del temp_node
-                            print("\033[33mDeleted at {}{} position \033[0m".format(position, self.get_suffix(position)))
+                            print("\033[32mDeletion at {}{} position Successful\033[0m".format(position, self.get_suffix(position)))
                         else:
                             self.delete_tail()
                             print(f"\033[32mDeletion at Tail Successful\033[0m")
@@ -307,7 +307,7 @@ class SingleLinkedList:
                     if temp_node.next:
                         next_node = temp_node.next
                         prev_node.next = next_node
-                        print("\033[33mDeletion at {}{} position \033[0m".format(position, self.get_suffix(position)))
+                        print("\033[32mDeletion at {}{} position Successful\033[0m".format(position, self.get_suffix(position)))
                     else:
                         self.delete_tail()
                         print(f"\033[32mDeletion at Tail Successful\033[0m")
@@ -344,7 +344,7 @@ class SingleLinkedList:
                                 self.tail = temp_node
                                 print(f"\033[32mDeletion at Tail Successful\033[0m")
                                 return
-                            print("\033[33mDeletion at {}{} position \033[0m".format(position, self.get_suffix(position)))
+                            print("\033[32mDeletion at {}{} position successful\033[0m".format(position, self.get_suffix(position)))
                             return
                         break
                     temp_node = temp_node.next
@@ -355,7 +355,8 @@ class SingleLinkedList:
 
 
     def print_list(self):
-        """     Print the Nodes in SingleLinkedList.
+        """     Print the Nodes in SingleLinkedList
+                    i.e, view is similar to LinkedList.
         """
         temp_node = self.head
         while temp_node:
@@ -366,7 +367,7 @@ class SingleLinkedList:
 
     def get_head(self):
         """     Returns the data present in the Head Node.
-                    If data not present return None.
+                    returns None If data was not present.
         """
         if self.head:
             return self.head.data
@@ -375,7 +376,7 @@ class SingleLinkedList:
 
     def get_tail(self):
         """     Returns the data present in the Tail Node.
-                    If data not present return None.
+                    returns None If data was not present.
         """
         if self.tail:
             return self.tail.data
