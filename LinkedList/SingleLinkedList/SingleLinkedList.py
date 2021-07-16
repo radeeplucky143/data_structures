@@ -176,7 +176,7 @@ class SingleLinkedList:
     def search_all(self, data):
         """     This Function is used to search for all Instances matched in the LinkedList.
                                             : data(param)   ==  Inserted value
-                                            : data(type)      ==   int,str,float
+                                            : data(type)      ==   int,str
         """
         if not self.check_data_type(data):
             return
