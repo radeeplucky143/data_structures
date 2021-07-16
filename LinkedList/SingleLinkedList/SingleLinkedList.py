@@ -81,9 +81,24 @@ class SingleLinkedList:
 
 
     def insert_pos(self, data, position):
+        """
+              This function is used to Insert the Node at defined position If possible
+               and make sure the inserted Node contains the data with same data type.
+        """
+        if self.data_type is not None:
+            if isinstance(data, self.data_type):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         if position >= 1:
             if position == 1:
-                self.insert_front(data)
+                new_node = Node(data)
+                if self.head is None:
+                    self.set_data_type(data)
+                    self.head = new_node
+                    self.tail = self.head
+                else:
+                    new_node.next = self.head
+                    self.head = new_node
                 return
             else:
                 temp_node = self.head
@@ -99,7 +114,7 @@ class SingleLinkedList:
                         return
                     count += 1
                     temp_node = temp_node.next
-        print("Index out of bounds")
+        print("Position out of bounds")
 
 
     def search(self, data):
