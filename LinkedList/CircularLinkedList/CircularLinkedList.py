@@ -95,7 +95,7 @@ class CircularLinkedList:
         """   This function is used to Insert the Node at back and make sure the inserted Node
                contains the data with same data type.
                                 : data(param)   ==  Inserted value
-                                : data(type)      ==   int,str,float
+                                : data(type)      ==   int,str
         """
         if not self.check_data_type(data):
             return
@@ -119,7 +119,7 @@ class CircularLinkedList:
                                         : data(param)   ==  Inserted value
                                         : position(param) == position to insert
 
-                                        : data(type)      ==   int,str,float
+                                        : data(type)      ==   int,str
                                         : position(type)  == int
         """
         if not isinstance(position, int):
@@ -167,7 +167,7 @@ class CircularLinkedList:
     def search(self, data):
         """     This Function is used to search for the first Instance matched in the LinkedList.
                                         : data(param)   ==  Inserted value
-                                        : data(type)      ==   int,str,float
+                                        : data(type)      ==   int,str
         """
         if not self.check_data_type(data):
             return
