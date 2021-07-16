@@ -15,12 +15,12 @@
     search()        search_all()   search_pos()
     delete()        delete_all()   delete_pos()
     delete_head()   delete_tail()  set_data_type()
+    check_data_type()  get_suffix()
     
 
  
   - finding Middle Node
   - Reversing Linked List
-  - Finding Unique Element
   - Checking Circular LinkedList or not
 
 
