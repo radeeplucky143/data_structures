@@ -22,6 +22,9 @@ class SingleLinkedList:
                     : data_type(type)  == int,float,str
     """
     def __init__(self):
+        """
+              created SingleLinkedList and initializes the head and tail to None.
+        """
         self.head = None
         self.tail = None
         self.data_type = None
