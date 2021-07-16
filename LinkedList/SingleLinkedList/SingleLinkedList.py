@@ -1,6 +1,6 @@
 class Node:
     """     Class used to create Node:
-                    : data(param)  ==  used to store the value
+                    : data(param)  ==  used to store data
                     : next(param)  ==  Pointer pointing to next Node
 
                     : next(type)     ==  Node(class)
@@ -15,7 +15,7 @@ class SingleLinkedList:
     """      Class used to create a SingleLinkedList Data Structure
                     : head(param)   ==  Pointing to First Element of SLL
                     : tail(param)     ==  Pointing to Last Element of SLL
-                    : data_type(param)  ==  stores the Node data type
+                    : data_type(param)  ==  stores the type of data inside Node
 
                     : head(type)  == Node(class)
                     : tail(type)    ==  Node(class)
@@ -28,9 +28,6 @@ class SingleLinkedList:
 
 
     def insert_front(self, data):
-        """
-                Node inserted to the front side of LinkedList.
-        """
         if self.data_type is not None:
             if isinstance(self.data_type, data):
                 print("Data should be of type : {}".format(self.data_type))
