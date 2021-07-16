@@ -80,8 +80,7 @@ class SingleLinkedList:
         new_node = Node(data)
         if self.head is None:
             self.set_data_type(data)
-            self.head = new_node
-            self.tail = self.head
+            self.head = self.tail = new_node
         else:
             new_node.next = self.head
             self.head = new_node
@@ -92,15 +91,14 @@ class SingleLinkedList:
         """   This function is used to Insert the Node at back and make sure the inserted Node
                contains the data with same data type.
                                 : data(param)   ==  Inserted value
-                                : data(type)      ==   int,str,float
+                                : data(type)      ==   int,str
         """
         if not self.check_data_type(data):
             return
         new_node = Node(data)
         if self.head is None:
             self.set_data_type(data)
-            self.head = new_node
-            self.tail = self.head
+            self.head = self.tail = new_node
             print(f"\033[32mInsertion at Head Successful\033[0m")
         else:
             self.tail.next = new_node
@@ -114,7 +112,7 @@ class SingleLinkedList:
                                         : data(param)   ==  Inserted value
                                         : position(param) == position to insert
 
-                                        : data(type)      ==   int,str,float
+                                        : data(type)      ==   int,str
                                         : position(type)  == int
         """
         if not isinstance(position, int):
@@ -127,8 +125,7 @@ class SingleLinkedList:
                 new_node = Node(data)
                 if self.head is None:
                     self.set_data_type(data)
-                    self.head = new_node
-                    self.tail = self.head
+                    self.head = self.tail = new_node
                 else:
                     new_node.next = self.head
                     self.head = new_node
@@ -158,7 +155,7 @@ class SingleLinkedList:
     def search(self, data):
         """     This Function is used to search for the first Instance matched in the LinkedList.
                                         : data(param)   ==  Inserted value
-                                        : data(type)      ==   int,str,float
+                                        : data(type)      ==   int, str
         """
         if not self.check_data_type(data):
             return
@@ -232,9 +229,9 @@ class SingleLinkedList:
         """
         if self.tail:
             if self.head == self.tail:
-                print(f"\033[32mDeletion at Head Successful\033[0m")
                 self.head = self.tail = None
                 self.data_type = None
+                print(f"\033[32mDeletion at Head Successful\033[0m")
             else:
                 temp_node = self.head
                 while temp_node.next != self.tail:
