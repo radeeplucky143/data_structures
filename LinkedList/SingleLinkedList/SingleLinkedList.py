@@ -178,6 +178,9 @@ class SingleLinkedList:
 
 
     def delete_head(self):
+        """
+            This Function is used to delete the head positioned Node If present.
+        """
         if self.head:
             if self.head == self.tail:
                 self.head = self.tail = None
@@ -188,6 +191,9 @@ class SingleLinkedList:
 
 
     def delete_tail(self):
+        """
+            This Function is used to delete the tail Node If Present.
+        """
         if self.tail:
             if self.head == self.tail:
                 self.head = self.tail = None
@@ -202,6 +208,13 @@ class SingleLinkedList:
 
 
     def delete(self, data):
+        """
+                This Function is used to delete First matched Instance .
+        """
+        if self.data_type is not None:
+            if isinstance(data, self.data_type):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         if self.head:
             if self.head.data == data:
                 if self.head == self.tail:
@@ -232,6 +245,13 @@ class SingleLinkedList:
 
 
     def delete_all(self, data):
+        """
+            This Function is used to delete all the Instances matched.
+        """
+        if self.data_type is not None:
+            if isinstance(data, self.data_type):
+                print("Data should be of type : {}".format(self.data_type))
+                return
         if self.head:
             operation = False
             if self.head.data == data:
@@ -262,6 +282,9 @@ class SingleLinkedList:
 
 
     def delete_pos(self, position):
+        """
+                This Function is used to delete the element at position If present.
+        """
         if position >= 1:
             if position == 1:
                 self.delete_head()
@@ -280,12 +303,15 @@ class SingleLinkedList:
                         break
                     temp_node = temp_node.next
                     count += 1
-            print("Index out of Bounds")
+            print("position out of Bounds")
             return
-        print("Index out of Bounds")
+        print("Position out of Bounds")
 
 
     def print_list(self):
+        """
+            Print the Entire LinkedList.
+        """
         temp_node = self.head
         while temp_node:
             print(temp_node.data, end='->')
@@ -294,8 +320,14 @@ class SingleLinkedList:
 
 
     def get_head(self):
+        """
+            Returns the data present in the Head Node.
+        """
         return self.head.data
 
 
     def get_tail(self):
+        """
+            Returns the data present in the Tail Node.
+        """
         return self.tail.data
