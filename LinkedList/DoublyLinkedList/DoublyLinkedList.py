@@ -93,7 +93,7 @@ class DoublyLinkedList:
         """   This function is used to Insert the Node at back and make sure the inserted Node
                        contains the data with same data type.
                                         : data(param)   ==  Inserted value
-                                        : data(type)      ==   int,str,float
+                                        : data(type)      ==   int,str
         """
         if not self.check_data_type(data):
             return
@@ -109,107 +109,168 @@ class DoublyLinkedList:
             print(f"\033[32mInsertion at Head Successful\033[0m")
 
 
-    def insert_pos(self, data, pos):
-        if pos >= 1:
-            if pos == 1:
-                self.insert_front(data)
+    def insert_pos(self, data, position):
+        """  This function is used to Insert the Node at defined position If possible
+                       and make sure the inserted Node contains the data with same data type.
+                                                : data(param)   ==  Inserted value
+                                                : position(param) == position to insert
+
+                                                : data(type)      ==   int,str
+                                                : position(type)  == int
+        """
+        if not isinstance(position, int):
+            print(f"\033[31mValueError for 'position' Arguement  Expected DataType: {int}\033[0m")
+            return
+        if not self.check_data_type(data):
+            return
+        if position >= 1:
+            if position == 1:
+                new_node = Node(data)
+                if self.head:
+                    new_node.next = self.head
+                    self.head.prev = new_node
+                    self.head = new_node
+                else:
+                    self.set_data_type(data)
+                    self.head = self.tail = new_node
+                print(f"\033[32mInsertion at Head Successful\033[0m")
                 return
             else:
                 count = 1
                 temp_node = self.head
                 new_node = Node(data)
                 while temp_node:
-                    if count == pos - 1:
+                    if count == position - 1:
                         next_node = temp_node.next
                         temp_node.next = new_node
                         new_node.prev = temp_node
                         new_node.next = next_node
                         if next_node is None:
                             self.tail = new_node
+                            print(f"\033[32mInsertion at Tail Successful\033[0m")
                         else:
                             next_node.prev = new_node
+                            x = self.get_suffix(position)
+                            print(f"\033[32mInsertion at {position}{x} position Successful\033[0m")
                         return
                     count += 1
                     temp_node = temp_node.next
-        print("Index out of Bounds")
+        print(f"\033[31mIndexOutOfBounds Insertion\033[0m")
 
     def search(self, data):
+        """     This Function is used to search for the first Instance matched in the LinkedList.
+                                                : data(param)   ==  Inserted value
+                                                : data(type)      ==   int, str
+        """
+        if not self.check_data_type(data):
+            return
         temp_node = self.head
         position = 1
         while temp_node:
             if temp_node.data == data:
-                print("{} number  found at position {}".format(data, position))
+                print("\033[33m{} Found at {}{} Position\033[0m".format(data, position, self.get_suffix(position)))
                 return
             position += 1
             temp_node = temp_node.next
-        print("Element not found")
+        print("\033[33m{} Not Found in LinkedList\033[0m".format(data))
 
 
     def search_all(self, data):
+        """     This Function is used to search for all Instances matched in the LinkedList.
+                                                    : data(param)   ==  Inserted value
+                                                    : data(type)      ==   int,str
+        """
+        if not self.check_data_type(data):
+            return
         temp_node = self.head
         position = 1
         found = False
         while temp_node:
             if temp_node.data == data:
-                print("{} number  found at position {}".format(data, position))
+                print("\033[33m{} Found at {}{} Position\033[0m".format(data, position, self.get_suffix(position)))
                 found = True
             position += 1
             temp_node = temp_node.next
         if not found:
-            print("Element not found")
+            print("\033[33m{} Not Found in LinkedList\033[0m".format(data))
 
 
-    def search_pos(self, pos):
-        if pos >= 1:
+    def search_pos(self, position):
+        """    This Function is used to search for the Instance at particular position in LinkedList.
+                                        : position(param)   ==  position in LinkedList
+                                        : position(type)  ==   int
+        """
+        if not isinstance(position, int):
+            print(f"\033[31mValueError for 'position' Arguement  Expected DataType: {int}\033[0m")
+            return
+        if position >= 1:
             temp_node = self.head
             count = 1
             while temp_node:
-                if count == pos:
-                    print("Element at {} position : {}".format(pos, temp_node.data))
+                if count == position:
+                    print("\033[33mElement at {}{} position : {}\033[0m".format(position, self.get_suffix(position), temp_node.data))
                     return
                 count += 1
                 temp_node = temp_node.next
-        print("Index out of Bounds")
+        print("\033[31mIndexOutOfBounds Search\033[0m")
 
 
     def delete_head(self):
+        """   This Function is used to delete the head  Node If present.
+        """
         if self.head:
             if self.head == self.tail:
                 self.head = self.tail = None
+                self.data_type = None
             else:
                 self.head = self.head.next
                 self.head.prev = None
+            print(f"\033[32mDeletion at Head Successful\033[0m")
             return
-        print("LinkedList was empty")
+        print("\033[35mLinkedList was empty\033[0m")
+
 
     def delete_tail(self):
+        """    This Function is used to delete the tail Node If Present.
+        """
         if self.tail:
             if self.head == self.tail:
                 self.head = self.tail = None
+                self.data_type = None
+                print(f"\033[32mDeletion at Head Successful\033[0m")
             else:
                 temp_node = self.head
                 while temp_node.next != self.tail:
                     temp_node = temp_node.next
                 self.tail = temp_node
                 self.tail.next = None
+                print(f"\033[32mDeletion at Tail Successful\033[0m")
             return
-        print("LinkedList was empty")
+        print("\033[35mLinkedList was empty\033[0m")
 
 
 
     def delete(self, data):
+        """     This Function is used to delete First matched Instance .
+                                        : data(param)  == data to be deleted
+                                        : data (type)    == int, str
+        """
+        if not self.check_data_type(data):
+            return
         if self.head:
             if self.head.data == data:
                 if self.head == self.tail:
                     self.head = self.tail = None
+                    self.data_type = None
                 else:
                     self.head = self.head.next
                     self.head.prev = None
-                print("Deleted at Head Position")
+                print(f"\033[32mDeletion at Head Successful\033[0m")
                 return
             else:
                 prev_node = self.head
                 temp_node = self.head.next
+                position = 2
                 while temp_node:
                     if temp_node.data == data:
                         if temp_node.next:
@@ -217,27 +278,35 @@ class DoublyLinkedList:
                             prev_node.next = next_node
                             next_node.prev = prev_node
                             del temp_node
-                            print("Deleted Successfully")
+                            print("\033[32mDeletion at {}{} position Successful\033[0m".format(position, self.get_suffix(position)))
                         else:
                             self.delete_tail()
-                            print("Deleted at Tail position")
+                            print(f"\033[32mDeletion at Tail Successful\033[0m")
                         return
                     prev_node = temp_node
                     temp_node = temp_node.next
-            print("Element not Found")
+                    position += 1
+            print(f"\033[33m{data} Not Found in LinkedList\033[0m")
             return
-        print("Linked List was Empty")
+        print("\033[35mLinked List was Empty\033[0m")
 
 
     def delete_all(self, data):
+        """     This Function is used to delete all the Instances matched.
+                                        : data(param)  == data to be deleted
+                                        : data (type)    == int, str
+        """
+        if not self.check_data_type(data):
+            return
         if self.head:
             operation = False
             if self.head.data == data:
                 self.delete_head()
                 operation = True
-                print("Deleted at Head Position")
+                print(f"\033[32mDeletion at Head Successful\033[0m")
             prev_node = self.head
             temp_node = self.head.next
+            position = 2
             while temp_node:
                 if temp_node.data == data:
                     operation = True
@@ -245,77 +314,82 @@ class DoublyLinkedList:
                         next_node = temp_node.next
                         prev_node.next = next_node
                         next_node.prev = prev_node
-                        print("Deleted Successfully")
+                        print("\033[32mDeletion at {}{} position Successful\033[0m".format(position, self.get_suffix(position)))
                     else:
                         self.delete_tail()
-                        print("Deleted at Tail position")
+                        print(f"\033[32mDeletion at Tail Successful\033[0m")
                         return
                     temp_node = next_node
                 else:
                     prev_node = temp_node
                     temp_node = temp_node.next
+                position += 1
             if not operation:
-                print("Element not Found")
+                print(f"\033[33m{data} Not Found in LinkedList\033[0m")
             return
-        print("Linked List was Empty")
+        print("\033[35mLinked List was Empty\033[0m")
 
 
-    def delete_pos(self, pos):
-        if pos >= 1:
-            if pos == 1:
+    def delete_pos(self, position):
+        """     This Function is used to delete the element at position If present.
+                                    : position(param)  == position of element to be deleted
+                                    : position(type) == int
+        """
+        if position >= 1:
+            if position == 1:
                 self.delete_head()
                 return
             else:
                 count = 1
                 temp_node = self.head
                 while temp_node:
-                    if count == pos - 1:
+                    if count == position - 1:
                         if temp_node.next:
                             next_node = temp_node.next.next
                             temp_node.next = next_node
                             if next_node is None:
                                 self.tail = temp_node
+                                print(f"\033[32mDeletion at Tail Successful\033[0m")
                             else:
                                 next_node.prev = temp_node
+                                print("\033[32mDeletion at {}{} position successful\033[0m".format(position, self.get_suffix(position)))
                             return
                         break
                     temp_node = temp_node.next
                     count += 1
-            print("Index out of Bounds")
+            print("\033[31mIndexOutOfBounds\033[0m")
             return
-        print("Index out of Bounds")
+        print("\033[31mIndexOutOfBounds\033[0m")
 
 
     def print_list(self):
+        """     Print the Nodes in SingleLinkedList
+                            i.e, view is similar to LinkedList.
+        """
         if self.head:
             temp_node = self.head
-            print("NULL", end='<->')
+            print("\033[34mNULL\033[0m", end='<->')
             while temp_node:
-                print(temp_node.data, end='<->')
+                print("\033[34m{}<->".format(temp_node.data), end="")
                 temp_node = temp_node.next
-            print("NULL")
+            print("\033[34mNULL\033[0m")
             return
-        print("NULL")
-
-
-    def print_reverse(self):
-        if self.tail:
-            temp_node = self.tail
-            print("NULL", end="<->")
-            while temp_node:
-                print(temp_node.data, end='<->')
-                temp_node = temp_node.prev
-            print("NULL")
-            return
-        print("NULL")
+        print("\033[34mNULL\033[0m")
 
 
     def get_head(self):
+        """     Returns the data present in the Head Node.
+                            returns None If data was not present.
+        """
         if self.head:
             return self.head.data
         return None
 
+
     def get_tail(self):
+        """     Returns the data present in the Tail Node.
+                            returns None If data was not present.
+        """
         if self.tail:
             return self.tail.data
         return None
